@@ -35,9 +35,11 @@ $f3->route('GET|POST /midSurvey', function($f3){
 
     //Initialize variables for user input
     $userQuestions = array();
+    $userName = "";
 
     //If the form has been submitted
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //var_dump($_POST);
         //Get user input
         $userQuestions = $_POST['quest'];
         $userName = $_POST['name'];
@@ -52,18 +54,19 @@ $f3->route('GET|POST /midSurvey', function($f3){
             $f3->set('errors["name"]', 'Name is not valid');
         }
 
-        //If questions are valid AND NOT EMPTY
-        if (validQuestions($userQuestions) && !empty($userQuestions)) {
-            $userAnswers = implode(", ", $userQuestions);
-            $_SESSION['quest'] = $userAnswers;
-            echo "<h1>Here1</h1>";
-        }
-        else {
+        if (!empty($userQuestions)) {
+            //If questions are valid AND NOT EMPTY
+            if (validQuestions($userQuestions) && !empty($userQuestions)) {
+                $_SESSION['quest'] = implode(", ", $userQuestions);
+                echo "<h1>Here1</h1>";
+            } else {
+                $f3->set('errors["quest"]', 'Invalid selection');
+                echo "<h1>Here2</h1>";
+            }
+        }else{
             $f3->set('errors["quest"]', 'Invalid selection');
-            $_SESSION['quest'] = "";
             echo "<h1>Here3</h1>";
         }
-
 
         // redirect to summary route
         if (empty($f3->get('errors'))) {
