@@ -11,7 +11,8 @@
     <h1 class="text-center">Midterm Survey</h1>
     <p>Thank you for taking the survey, {{ @SESSION.name }}!</p>
     <check if="{{ isset(@SESSION.quest) }}">
-        <p>Condiments: {{ @SESSION.quest }}</p>
+        <h4>Your answers: </h4>
+        <p>{{ @SESSION.quest }}</p>
     </check>
 
 </div>
