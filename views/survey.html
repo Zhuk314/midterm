@@ -11,14 +11,22 @@
     <h1 class="text-center">Midterm Survey</h1>
     <br>
     <form>
-        <label for="name" class="control-label">Name: </label>
+        <label for="name" >Name: </label>
+        <input type="text" name="name" id="name">
 
-        <div class="col-sm-4">
-            <input class="form-control" type="text" name="name" id="name">
+        <div class="mt-3">
+            <h6>Check all that apply:</h6>
+            <repeat group="{{ @questions }}" value="{{ @question }}">
+                <label><input type="checkbox"
+                              name="quest[]"
+                              value="{{ @question }}"> {{ @question }}</label><br>
+            </repeat>
         </div>
 
-
-
+        <div class="col-xs-3 ">
+            <input class="form-control btn btn-primary w-25 mt-3"
+                   type="submit" value="Place Order">
+        </div>
     </form>
 </div>
 
