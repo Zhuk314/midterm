@@ -12,7 +12,7 @@
     <br>
     <form method="post">
         <label for="name" >Name: </label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" value="{{ @name }}">
         <br>
 
         <check if="{{ isset(@errors['name']) }}">
@@ -24,7 +24,11 @@
             <repeat group="{{ @questions }}" value="{{ @question }}">
                 <label><input type="checkbox"
                               name="quest[]"
-                              value="{{ @question }}"> {{ @question }}</label><br>
+                              value="{{ @question }}"
+                    <check if="{{in_array(@question, @userQuestions) }}">
+                        checked="checked"
+                    </check>
+                > {{ @question }}</label><br>
             </repeat>
         </div>
         <check if="{{ isset(@errors['quest']) }}">

@@ -58,14 +58,12 @@ $f3->route('GET|POST /midSurvey', function($f3){
             //If questions are valid AND NOT EMPTY
             if (validQuestions($userQuestions) && !empty($userQuestions)) {
                 $_SESSION['quest'] = implode(", ", $userQuestions);
-                echo "<h1>Here1</h1>";
             } else {
                 $f3->set('errors["quest"]', 'Invalid selection');
-                echo "<h1>Here2</h1>";
             }
         }else{
             $f3->set('errors["quest"]', 'Invalid selection');
-            echo "<h1>Here3</h1>";
+            $userQuestions = array();
         }
 
         // redirect to summary route
@@ -78,6 +76,7 @@ $f3->route('GET|POST /midSurvey', function($f3){
     $f3->set('questions', getQuestions());
 
     //Add the user data to the hive
+    $f3->set('name', $userName);
     $f3->set('userQuestions', $userQuestions);
 
     //Display the survey form
