@@ -1,0 +1,22 @@
+<!--
+    328/midterm/views/summary.html
+
+    Author: Yurii Zhuk
+    Date:05/15/2021
+-->
+
+<include href="views/header.html" />
+<body>
+<div class="container">
+    <h1 class="text-center">Midterm Survey</h1>
+    <p>Thank you for taking the survey, {{ @SESSION.name }}!</p>
+    <check if="{{ isset(@SESSION.quest) }}">
+        <p>Condiments: {{ @SESSION.quest }}</p>
+    </check>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</body>
+</html>

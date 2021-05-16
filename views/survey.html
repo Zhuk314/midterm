@@ -10,7 +10,7 @@
 <div class="container jumbotron">
     <h1 class="text-center">Midterm Survey</h1>
     <br>
-    <form>
+    <form method="post">
         <label for="name" >Name: </label>
         <input type="text" name="name" id="name">
 
@@ -22,10 +22,13 @@
                               value="{{ @question }}"> {{ @question }}</label><br>
             </repeat>
         </div>
+        <check if="{{ isset(@errors['quest']) }}">
+            <span class="err">{{ @errors['quest'] }}</span>
+        </check>
 
         <div class="col-xs-3 ">
             <input class="form-control btn btn-primary w-25 mt-3"
-                   type="submit" value="Place Order">
+                   type="submit" value="Submit">
         </div>
     </form>
 </div>
